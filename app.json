@@ -1,0 +1,28 @@
+{
+  "name": "Minitsbot",
+  "description": "A telegram bot to do two dedicated tasks!",
+  "keywords": [
+    "telegram",
+    "bot",
+    "deno",
+    "typescript",
+    "grammy"
+  ],
+    "buildpacks": [{
+    "url": "https://github.com/chibat/heroku-buildpack-deno.git"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "repository": "https://github.com/DivideProjects/minitsbot.git",
+  "env": {
+    "TOKEN": {
+      "description": "Bot token from @Botfather of telegram.",
+      "required": true,
+      "value": "id:token"
+    }
+  }
+}
