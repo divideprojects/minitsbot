@@ -6,22 +6,22 @@ import { apiThrottler } from "https://deno.land/x/grammy_transformer_throttler@v
 const bot = new Bot(String(Deno.env.get("TOKEN")));
 bot.api.config.use(apiThrottler());
 
-bot.command("start", async (ctx) => {
+bot.command("start", (ctx) => {
     if (ctx.chat.type === "private") {
-        await ctx.reply("Welcome! just add me in any chat with ban, delete and invite permission and i will do the rest.")
+        return ctx.reply("Welcome! just add me in any chat with ban, delete and invite permission and i will do the rest; By @Memers_Gallery")
     } else {
-        await ctx.reply("I'm alive!")
+        return ctx.reply("I'm alive!")
     }
 });
-bot.on("message:text", async (ctx) => {
-  if (ctx.message.text.startsWith("#group") && ctx.chat.type !== "private") {
-      await ctx.deleteMessage()
-}});
 bot.on("message", async (ctx) => {
+  if (ctx.message.text && ctx.message.text.startsWith("#group") && ctx.chat.type !== "private") {
+      return await ctx.deleteMessage()
+  };
   if (ctx.from.id === 136817688 && ctx.chat.type === "supergroup") {
-      await ctx.deleteMessage()
+      console.log("kk")
+      return await ctx.deleteMessage()
 }});
-bot.on("chat_join_request", async (ctx) => await ctx.approveChatJoinRequest(ctx.from.id));
+bot.on("chat_join_request", (ctx) => ctx.approveChatJoinRequest(ctx.from.id));
 bot.catch((err) => {
   const e = err.error;
   if (e instanceof GrammyError) {
@@ -32,5 +32,6 @@ bot.catch((err) => {
     console.error("Unknown error:", e);
   }
 });
+
 console.log("Started!");
 run(bot);
