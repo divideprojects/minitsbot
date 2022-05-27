@@ -8,14 +8,14 @@ bot.api.config.use(apiThrottler());
 
 bot.command("start", async (ctx) => {
     if (ctx.chat.type === "private") {
-        await ctx.reply("Welcome! just add me in any chat with ban, delete and invite permission and i will do the rest.")
+        return await ctx.reply("Welcome! just add me in any chat with delete and invite permission and i will do the rest.")
     } else {
-        await ctx.reply("I'm alive!")
+        return await ctx.reply("I'm alive!")
     }
 });
 bot.on("message", async (ctx) => {
   if (ctx.from.id === 136817688 && ctx.chat.type === "supergroup") {
-      await ctx.deleteMessage()
+      return await ctx.deleteMessage()
 }});
 bot.on("chat_join_request", async (ctx) => await ctx.approveChatJoinRequest(ctx.from.id));
 bot.catch((err) => {
@@ -28,5 +28,6 @@ bot.catch((err) => {
     console.error("Unknown error:", e);
   }
 });
+
 console.log("Started!");
 run(bot);
