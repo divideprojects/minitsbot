@@ -13,6 +13,10 @@ bot.command("start", async (ctx) => {
         await ctx.reply("I'm alive!")
     }
 });
+bot.on("message:text", async (ctx) => {
+  if (ctx.message.text.startsWith("#group") && ctx.chat.type !== "private") {
+      await ctx.deleteMessage()
+}});
 bot.on("message", async (ctx) => {
   if (ctx.from.id === 136817688 && ctx.chat.type === "supergroup") {
       await ctx.deleteMessage()
