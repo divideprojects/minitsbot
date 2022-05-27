@@ -8,7 +8,7 @@ bot.api.config.use(apiThrottler());
 
 bot.command("start", async (ctx) => {
     if (ctx.chat.type === "private") {
-        return await ctx.reply("Welcome! just add me in any chat with ban, delete and invite permission and i will do the rest; By @Memers_Gallery")
+        return await ctx.reply("Welcome! just add me in any chat with delete and invite permission and i will do the rest.")
     } else {
         return await ctx.reply("I'm alive!")
     }
