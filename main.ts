@@ -14,9 +14,6 @@ bot.command("start", async (ctx) => {
     }
 });
 bot.on("message", async (ctx) => {
-  if (ctx.message.text && ctx.message.text.startsWith("#group") && ctx.chat.type !== "private") {
-      return await ctx.deleteMessage()
-  };
   if (ctx.from.id === 136817688 && ctx.chat.type === "supergroup") {
       return await ctx.deleteMessage()
 }});
