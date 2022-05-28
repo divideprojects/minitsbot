@@ -23,6 +23,11 @@
       "description": "Bot token from @Botfather of telegram.",
       "required": true,
       "value": "id:token"
+    },
+    "PORT": {
+      "description": "Don't touch.",
+      "required": true,
+      "value": "84"
     }
   }
 }
